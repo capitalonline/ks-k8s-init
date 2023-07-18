@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cds-properties
+  namespace: kube-system
+data:
+  k8s_cluster_id: "{k8s_cluster_id}"
+  site_id: "{site_id}"
+  site_name: "{site_name}"
+  oversea: "{oversea}"
+
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cck-secrets
+  namespace: kube-system
+type: Opaque
+data:
+  access_key_id: '{access_key_id}'
+  access_key_secret: '{access_key_secret}'
+
