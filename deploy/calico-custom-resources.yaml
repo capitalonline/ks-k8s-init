@@ -10,7 +10,7 @@ spec:
   calicoNetwork:
     # Note: The ipPools section cannot be modified post-install.
     ipPools:
-      - blockSize: '{defaultBlockSize}'
+      - blockSize: {defaultBlockSize}
         cidr: '{defaultCidr}'
 #        encapsulation: VXLANCrossSubnet
 #        encapsulation: IPIPCrossSubnet
