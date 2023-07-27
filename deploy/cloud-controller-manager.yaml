@@ -177,8 +177,6 @@ spec:
                   key: oversea
             - name: CDS_API_SCHEMA
               value: http
-            - name: CDS_API_HOST
-              value: cdsapi-gateway.gic.pre
           #image: registry-bj.capitalonline.net/cck/cdscloud-controller-manager:v1.0.4
           #          image: eks-cloud-controller-manager:v1.0.0
           image: 1989822164/eks-cloud-controller-manager:v0.0.1
@@ -209,8 +207,5 @@ spec:
       tolerations:
         - operator: Exists
           effect: NoSchedule
-      hostAliases:
-        - ip: "101.251.217.74"
-          hostnames:
-            - cdsapi-gateway.gic.pre
+
 
