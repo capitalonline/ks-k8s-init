@@ -176,7 +176,15 @@ spec:
                   name: cds-properties
                   key: oversea
             - name: CDS_API_SCHEMA
-              value: http
+              valueFrom:
+                configMapKeyRef:
+                  name: cds-properties
+                  key: openapi_schema
+            - name: CDS_API_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: cds-properties
+                  key: openapi_host
           #image: registry-bj.capitalonline.net/cck/cdscloud-controller-manager:v1.0.4
           #          image: eks-cloud-controller-manager:v1.0.0
           image: 1989822164/eks-cloud-controller-manager:v0.0.1
@@ -189,6 +197,10 @@ spec:
               memory: 100Mi
       dnsPolicy: Default
       hostNetwork: true
+      hostAliases:
+        - ip: ''
+          hostnames:
+            -
       serviceAccountName: cloud-controller-manager
       #      tolerations:
       #        - effect: NoSchedule

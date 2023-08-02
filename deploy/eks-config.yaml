@@ -8,6 +8,8 @@ data:
   site_id: "{site_id}"
   site_name: "{site_name}"
   oversea: "{oversea}"
+  openapi_host: "{openapi_host}"
+  openapi_schema: "{openapi_schema}"
 
 
 ---
