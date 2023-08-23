@@ -229,12 +229,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: access_key_id
-                  name: cck-secrets
+                  name: eks-secrets
             - name: CDS_ACCESS_KEY_SECRET
               valueFrom:
                 secretKeyRef:
                   key: access_key_secret
-                  name: cck-secrets
+                  name: eks-secrets
             - name: CDS_OVERSEA
               valueFrom:
                 configMapKeyRef:
@@ -372,12 +372,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: access_key_id
-                  name: cck-secrets
+                  name: eks-secrets
             - name: CDS_ACCESS_KEY_SECRET
               valueFrom:
                 secretKeyRef:
                   key: access_key_secret
-                  name: cck-secrets
+                  name: eks-secrets
             - name: CDS_OVERSEA
               valueFrom:
                 configMapKeyRef:

@@ -10,13 +10,14 @@ data:
   oversea: "{oversea}"
   openapi_host: "{openapi_host}"
   openapi_schema: "{openapi_schema}"
-
+  lb_openapi_host: "{lb_openapi_host}"
+  vpc_id: "{vpc_id}"
 
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: cck-secrets
+  name: eks-secrets
   namespace: kube-system
 type: Opaque
 data:

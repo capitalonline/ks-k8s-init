@@ -154,12 +154,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: access_key_id
-                  name: cck-secrets
+                  name: eks-secrets
             - name: CDS_ACCESS_KEY_SECRET
               valueFrom:
                 secretKeyRef:
                   key: access_key_secret
-                  name: cck-secrets
+                  name: eks-secrets
             - name: CDS_CLUSTER_ID
               valueFrom:
                 configMapKeyRef:
@@ -185,6 +185,16 @@ spec:
                 configMapKeyRef:
                   name: cds-properties
                   key: openapi_host
+            - name: CDS_LB_API_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: cds-properties
+                  key: lb_openapi_host
+            - name: CDS_VPC_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: cds-properties
+                  key: vpc_id
           #image: registry-bj.capitalonline.net/cck/cdscloud-controller-manager:v1.0.4
           #          image: eks-cloud-controller-manager:v1.0.0
           image: 1989822164/eks-cloud-controller-manager:v0.0.1
