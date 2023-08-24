@@ -17,6 +17,8 @@ spec:
         encapsulation: '{encapsulation}'
         natOutgoing: Enabled
         nodeSelector: all()
+    nodeAddressAutodetectionV4:
+      interface: eth1
 #  variant: Calico
 #  imagePullSecrets:
 #    - name: tigera-pull-secret
