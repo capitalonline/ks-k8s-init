@@ -5,8 +5,8 @@ metadata:
   namespace: kube-system
 data:
   k8s_cluster_id: "{k8s_cluster_id}"
-  site_id: "{site_id}"
-  site_name: "{site_name}"
+#  site_id: "{site_id}"
+#  site_name: "{site_name}"
   oversea: "{oversea}"
   openapi_host: "{openapi_host}"
   openapi_schema: "{openapi_schema}"
