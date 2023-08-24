@@ -165,11 +165,6 @@ spec:
                 configMapKeyRef:
                   key: k8s_cluster_id
                   name: cds-properties
-            - name: CDS_REGION
-              valueFrom:
-                configMapKeyRef:
-                  key: site_id
-                  name: cds-properties
             - name: CDS_OVERSEA
               valueFrom:
                 configMapKeyRef:
