@@ -140,7 +140,7 @@ spec:
     spec:
       initContainers:
         - name: install-oss-server
-          image: registry-bj.capitalonline.net/cck/oss-server:v1.0.1
+          image: capitalonline/oss-server:v1.0.1
           imagePullPolicy: Always
           command:
             - /bin/sh
@@ -161,7 +161,7 @@ spec:
           env:
             - name: CSI_ENDPOINT
               value: unix://var/lib/kubelet/plugins/oss.csi.cds.net/csi.sock
-          image: registry-bj.capitalonline.net/cck/cds-csi-driver:v2.1.2
+          image: capitalonline/cds-csi-driver:v2.1.2
           imagePullPolicy: Always
           name: oss-csi-node-server
           securityContext:
@@ -189,7 +189,7 @@ spec:
               value: /var/lib/kubelet/plugins/oss.csi.cds.net/csi.sock
             - name: DRIVER_REG_SOCK_PATH
               value: /var/lib/kubelet/plugins/oss.csi.cds.net/csi.sock
-          image: registry-bj.capitalonline.net/cck/csi-node-driver-registrar:v1.2.0
+          image: capitalonline/csi-node-driver-registrar:v1.2.0
           imagePullPolicy: Always
           lifecycle:
             preStop:
@@ -207,7 +207,7 @@ spec:
         - args:
             - --csi-address=/var/lib/kubelet/plugins/oss.csi.cds.net/csi.sock
             - --health-port=9808
-          image: registry-bj.capitalonline.net/cck/csi-livenessprobe:v2.0.0
+          image: capitalonline/csi-livenessprobe:v2.0.0
           name: oss-liveness-probe
           volumeMounts:
             - mountPath: /var/lib/kubelet/
