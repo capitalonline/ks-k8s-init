@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+   name: alarm
+   namespace: monitoring
+   annotations:
+     kubernetes.io/ingress.class: nginx
+spec:
+   rules:
+   - host: k8s.alarm
+     http:
+       paths:
+       - path: /
+         backend:
+          serviceName: alertmanager-operated
+          servicePort: 9093
+   tls:
+     - hosts:
+         - k8s.alarm
+       secretName: monitoring-certs
