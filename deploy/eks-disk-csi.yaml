@@ -250,7 +250,7 @@ spec:
                 configMapKeyRef:
                   name: cds-properties
                   key: openapi_host
-          image: capitalonline/cds-csi-driver:v2.1.3
+          image: capitalonline/cds-csi-driver:v1.0.0-eks
           imagePullPolicy: Always
           livenessProbe:
             exec:
@@ -393,7 +393,7 @@ spec:
                 configMapKeyRef:
                   name: cds-properties
                   key: openapi_host
-          image: capitalonline/cds-csi-driver:v2.1.3
+          image: capitalonline/cds-csi-driver:v1.0.0-eks
           imagePullPolicy: Always
           name: eks-disk-csi-node-server
           securityContext:
