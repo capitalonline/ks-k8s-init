@@ -29,7 +29,7 @@ spec:
       containers:
       - args:
         - --kubelet-service=kube-system/kubelet
-        - --prometheus-config-reloader=quay.io/prometheus-operator/prometheus-config-reloader:v0.67.1
+        - --prometheus-config-reloader=capitalonline/prometheus-config-reloader:v0.67.1
         image: capitalonline/prometheus-operator:v0.67.1
         name: prometheus-operator
         ports:
