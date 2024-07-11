@@ -21,6 +21,13 @@ spec:
   image: capitalonline/prometheus:v2.46.0
   nodeSelector:
     kubernetes.io/os: linux
+    node-role.kubernetes.io/control-plane: ''
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: NoSchedule
+    - key: node-role.eks.net/infra
+      operator: Exists
   podMetadata:
     labels:
       app.kubernetes.io/component: prometheus
