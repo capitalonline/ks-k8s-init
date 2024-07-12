@@ -183,16 +183,34 @@ spec:
             - mountPath: /tmp
               name: tmp-dir
       nodeSelector:
-        kubernetes.io/os: linux
+        node-role.kubernetes.io/master: ""
       priorityClassName: system-cluster-critical
       serviceAccountName: metrics-server
       hostNetwork: true
       volumes:
         - emptyDir: {}
           name: tmp-dir
-#      tolerations:
-#        - key: node.cloudprovider.kubernetes.io/uninitialized
-#          operator: Exists
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          effect: NoSchedule
+          operator: Exists
+        - key: node-role.eks.net/infra
+          operator: Exists
+          effect: NoSchedule
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 30
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 30
+        - key: node.cloudprovider.kubernetes.io/uninitialized
+          operator: Exists
+        - key: node-role.kubernetes.io/master
+          operator: Exists
+
+
 ---
 apiVersion: policy/v1
 kind: PodDisruptionBudget
