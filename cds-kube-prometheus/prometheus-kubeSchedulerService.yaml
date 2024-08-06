@@ -4,10 +4,10 @@ metadata:
   namespace: kube-system
   name: kube-scheduler
   labels:
-    k8s-app: kube-scheduler 
+    k8s-app: kube-scheduler
 spec:
-  selector: 
-    component: kube-scheduler 
+  selector:
+    component: kube-scheduler
   ports:
   - name: http-metrics
     port: 10251
