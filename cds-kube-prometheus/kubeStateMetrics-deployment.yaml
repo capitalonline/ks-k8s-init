@@ -103,4 +103,12 @@ spec:
           runAsUser: 65532
       nodeSelector:
         kubernetes.io/os: linux
+        node-role.kubernetes.io/control-plane: ""
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+        - key: node-role.eks.net/infra
+          operator: Exists
+          effect: NoSchedule
       serviceAccountName: kube-state-metrics
