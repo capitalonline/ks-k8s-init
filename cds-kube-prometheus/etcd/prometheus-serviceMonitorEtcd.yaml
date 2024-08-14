@@ -10,7 +10,6 @@ spec:
   - port: port
     interval: 30s
     scheme: https
-    #port: https-metrics
     tlsConfig:
       caFile: /etc/prometheus/secrets/etcd-certs/ca.crt
       certFile: /etc/prometheus/secrets/etcd-certs/healthcheck-client.crt

@@ -2,25 +2,41 @@ apiVersion: monitoring.coreos.com/v1
 kind: Alertmanager
 metadata:
   labels:
-    alertmanager: main
+    app.kubernetes.io/component: alert-router
+    app.kubernetes.io/instance: main
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 0.26.0
   name: main
   namespace: monitoring
 spec:
-  tolerations:
-  - key: "node-role.kubernetes.io/master"
-    effect: "NoSchedule"
-  - effect: NoSchedule
-    key: node-role.eks.net/infra
-  # baseImage: registry-bj.capitalonline.net/cck/prometheus/alertmanager
-  baseImage: capitalonline/alertmanager
+  image: capitalonline/alertmanager:v0.26.0
   nodeSelector:
     kubernetes.io/os: linux
     node-role.kubernetes.io/master: ""
-
-  replicas: 3
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      effect: NoSchedule
+    - key: node-role.eks.net/infra
+      effect: NoSchedule
+  podMetadata:
+    labels:
+      app.kubernetes.io/component: alert-router
+      app.kubernetes.io/instance: main
+      app.kubernetes.io/name: alertmanager
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 0.26.0
+  replicas: 1
+  resources:
+    limits:
+      cpu: 100m
+      memory: 100Mi
+    requests:
+      cpu: 4m
+      memory: 100Mi
   securityContext:
     fsGroup: 2000
     runAsNonRoot: true
     runAsUser: 1000
   serviceAccountName: alertmanager-main
-  version: v0.18.0
+  version: 0.26.0

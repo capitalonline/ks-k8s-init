@@ -22,11 +22,11 @@ metadata:
     k8s-app: etcd
 subsets:
 - addresses:
-  - ip: 121.32.250.66
+  - ip: 10.246.0.16
     nodeName: master001
-  - ip: 121.32.250.67
+  - ip: 10.246.0.17
     nodeName: master002
-  - ip: 121.32.250.68
+  - ip: 10.246.0.18
     nodeName: master003
   ports:
   - name: port
