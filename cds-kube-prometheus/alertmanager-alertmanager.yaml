@@ -13,13 +13,14 @@ spec:
   image: capitalonline/alertmanager:v0.26.0
   nodeSelector:
     kubernetes.io/os: linux
-    node-role.kubernetes.io/control-plane: ''
+    node-role.kubernetes.io/control-plane: ""
   tolerations:
     - key: node-role.kubernetes.io/control-plane
       operator: Exists
       effect: NoSchedule
     - key: node-role.eks.net/infra
       operator: Exists
+      effect: NoSchedule
   podMetadata:
     labels:
       app.kubernetes.io/component: alert-router

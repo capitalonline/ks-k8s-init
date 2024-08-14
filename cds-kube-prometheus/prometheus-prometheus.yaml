@@ -21,13 +21,14 @@ spec:
   image: capitalonline/prometheus:v2.46.0
   nodeSelector:
     kubernetes.io/os: linux
-    node-role.kubernetes.io/control-plane: ''
+    node-role.kubernetes.io/control-plane: ""
   tolerations:
     - key: node-role.kubernetes.io/control-plane
       operator: Exists
       effect: NoSchedule
     - key: node-role.eks.net/infra
       operator: Exists
+      effect: NoSchedule
   podMetadata:
     labels:
       app.kubernetes.io/component: prometheus
@@ -39,7 +40,7 @@ spec:
   podMonitorSelector: {}
   probeNamespaceSelector: {}
   probeSelector: {}
-  replicas: 2
+  replicas: 1
   secrets:
     - etcd-certs
   resources:
@@ -55,3 +56,12 @@ spec:
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
   version: 2.46.0
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: default-local-sc
+        resources:
+          requests:
+            storage: 30Gi
