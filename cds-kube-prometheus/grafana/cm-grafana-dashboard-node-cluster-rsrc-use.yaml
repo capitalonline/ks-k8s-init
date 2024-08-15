@@ -1048,5 +1048,6 @@ data:
           },
           "timezone": "utc",
           "title": "Node Exporter / USE Method / Cluster",
+          "uid": "ada033d9-7b3d-479c-a433-2f7c8dd00aa1",
           "version": 0
       }
