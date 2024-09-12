@@ -63,7 +63,7 @@ spec:
         - '{dashboard_internal_host}'
       secretName: kubernetes-dashboard-certs
   rules:
-  - host: '{dashboard_internal_host}'
+    - host: '{dashboard_internal_host}'
       http:
         paths:
           - path: /
