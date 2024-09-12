@@ -137,6 +137,7 @@ metadata:
   name: eks-cloud-controller-manager
   namespace: kube-system
 spec:
+  progressDeadlineSeconds: 30
   replicas: 1
   revisionHistoryLimit: 2
   selector:
