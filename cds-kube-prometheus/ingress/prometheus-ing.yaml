@@ -19,7 +19,18 @@ spec:
               number: 9090
         path: /
         pathType: ImplementationSpecific
+  - host: k8s_internal.prometheus
+    http:
+      paths:
+      - backend:
+          service:
+            name: prometheus-k8s
+            port:
+              number: 9090
+        path: /
+        pathType: ImplementationSpecific
   tls:
     - hosts:
         - k8s.prometheus
+        - k8s_internal.prometheus
       secretName: monitoring-certs
