@@ -16,7 +16,18 @@ spec:
               number: 3000
         path: /
         pathType: ImplementationSpecific
+  - host: k8s_internal.grafana
+    http:
+      paths:
+      - backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
+        path: /
+        pathType: ImplementationSpecific
   tls:
     - hosts:
         - k8s.grafana
+        - k8s_internal.grafana
       secretName: monitoring-certs
