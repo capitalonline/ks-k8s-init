@@ -195,7 +195,7 @@ spec:
                 configMapKeyRef:
                   name: cds-properties
                   key: vpc_id
-          image: capitalonline/eks-cloud-controller-manager:v1.0.4-test
+          image: capitalonline/eks-cloud-controller-manager:v1.0.3
           imagePullPolicy: Always
           name: cds-cloud-controller-manager
           resources:
