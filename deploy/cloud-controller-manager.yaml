@@ -137,6 +137,7 @@ metadata:
   name: eks-cloud-controller-manager
   namespace: kube-system
 spec:
+  progressDeadlineSeconds: 30
   replicas: 1
   revisionHistoryLimit: 2
   selector:
@@ -194,7 +195,7 @@ spec:
                 configMapKeyRef:
                   name: cds-properties
                   key: vpc_id
-          image: capitalonline/eks-cloud-controller-manager:v1.0.2
+          image: capitalonline/eks-cloud-controller-manager:v1.0.3
           imagePullPolicy: Always
           name: cds-cloud-controller-manager
           resources:

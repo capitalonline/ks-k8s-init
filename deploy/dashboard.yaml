@@ -60,8 +60,19 @@ spec:
   tls:
     - hosts:
         - '{dashboard_host}'
+        - '{dashboard_internal_host}'
       secretName: kubernetes-dashboard-certs
   rules:
+    - host: '{dashboard_internal_host}'
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard
+                port:
+                  number: 443
     - host: '{dashboard_host}'
       http:
         paths:
