@@ -471,6 +471,8 @@ spec:
         - hostPath:
             path: /dev
           name: host-dev
+      nodeSelector:
+        node.kubernetes.io/eks-disk-csi: ""
   updateStrategy:
     type: RollingUpdate
 ---
