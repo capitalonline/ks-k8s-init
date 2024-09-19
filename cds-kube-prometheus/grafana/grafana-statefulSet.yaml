@@ -41,7 +41,7 @@ spec:
       automountServiceAccountToken: false
       containers:
       - env: []
-        image: capitalonline/grafana:10.3.1
+        image: registry-bj.capitalonline.net/eks/grafana:10.3.1
         name: grafana
         ports:
         - containerPort: 3000
@@ -147,8 +147,20 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/workload-total
           name: grafana-dashboard-workload-total
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/nvidia_gpu
+        - mountPath: /grafana-dashboard-definitions/0/nvidia_gpu_v2
           name: grafana-nvidia-gpu-dashboard
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/dragonfly-client
+          name: grafana-dragonfly-client-dashboard 
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/dragonfly-manager
+          name: grafana-dragonfly-manager-dashboard
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/dragonfly-scheduler
+          name: grafana-dragonfly-scheduler-dashboard
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/dragonfly-seed-client
+          name: grafana-dragonfly-seed-client-dashboard 
           readOnly: false
         - mountPath: /etc/grafana
           name: grafana-config
@@ -238,6 +250,18 @@ spec:
       - configMap:
           name: grafana-nvidia-gpu-dashboard
         name: grafana-nvidia-gpu-dashboard
+      - configMap:
+          name: grafana-dragonfly-client-dashboard
+        name: grafana-dragonfly-client-dashboard
+      - configMap:
+          name: grafana-dragonfly-manager-dashboard
+        name: grafana-dragonfly-manager-dashboard
+      - configMap:
+          name: grafana-dragonfly-scheduler-dashboard
+        name: grafana-dragonfly-scheduler-dashboard
+      - configMap:
+          name: grafana-dragonfly-seed-client-dashboard
+        name: grafana-dragonfly-seed-client-dashboard
       - secret:
           secretName: grafana-config
         name: grafana-config
