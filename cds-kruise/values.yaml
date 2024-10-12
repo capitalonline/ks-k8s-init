@@ -23,7 +23,7 @@ manager:
 
   replicas: 2
   image:
-    repository: registry-bj.capitalonline.net/eks/kruise-manager
+    repository: capitalonline/kruise-manager
     tag: v1.6.3
   webhook:
     port: 9876
