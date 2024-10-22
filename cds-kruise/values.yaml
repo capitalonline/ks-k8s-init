@@ -54,7 +54,7 @@ manager:
             - key: node-role.kubernetes.io/control-plane
               operator: Exists
   tolerations:
-    - key: node-role.kubernetes.io/control-plane
+    - key: node-role.kubernetes.io/master
       effect: NoSchedule
       operator: Exists
     - key: node-role.eks.net/infra
@@ -69,8 +69,6 @@ manager:
       operator: Exists
       tolerationSeconds: 30
     - key: node.cloudprovider.kubernetes.io/uninitialized
-      operator: Exists
-    - key: node-role.kubernetes.io/control-plane
       operator: Exists
 
 webhookConfiguration:
