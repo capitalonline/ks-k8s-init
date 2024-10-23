@@ -46,9 +46,30 @@ manager:
 
   hostNetwork: false
 
-  nodeAffinity: {}
   nodeSelector: {}
-  tolerations: []
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node-role.kubernetes.io/control-plane
+              operator: Exists
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      effect: NoSchedule
+      operator: Exists
+    - key: node-role.eks.net/infra
+      operator: Exists
+      effect: NoSchedule
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 30
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 30
+    - key: node.cloudprovider.kubernetes.io/uninitialized
+      operator: Exists
 
 webhookConfiguration:
   timeoutSeconds: 30
