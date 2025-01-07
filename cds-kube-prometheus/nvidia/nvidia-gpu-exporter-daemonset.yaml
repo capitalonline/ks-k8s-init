@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: dcgm-exporter
-        image: capitalonline/dcgm-exporter:3.3.5-3.4.0-ubuntu22.04-v2
+        image: capitalonline/dcgm-exporter:3.3.8-3.6.0-ubuntu22.04-v3
         env:
         - name: "DCGM_EXPORTER_LISTEN"
           value: ":9400"
