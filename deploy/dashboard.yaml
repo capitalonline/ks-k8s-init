@@ -51,17 +51,28 @@ metadata:
   name: dashboard-ingress
   namespace: kubernetes-dashboard
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/secure-backends: "true"
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - '{dashboard_host}'
-    - secretName: kubernetes-dashboard-certs
+        - '{dashboard_internal_host}'
+      secretName: kubernetes-dashboard-certs
   rules:
+    - host: '{dashboard_internal_host}'
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard
+                port:
+                  number: 443
     - host: '{dashboard_host}'
       http:
         paths:

@@ -15,6 +15,16 @@ spec:
       - backend:
           service:
             name: alertmanager-operated
+            port:
+              number: 9093
+        path: /
+        pathType: ImplementationSpecific
+  - host: k8s_internal.alarm
+    http:
+      paths:
+      - backend:
+          service:
+            name: alertmanager-operated
             port: 
               number: 9093
         path: /
@@ -22,4 +32,5 @@ spec:
   tls:
     - hosts:
         - k8s.alarm
+        - k8s_internal.alarm
       secretName: monitoring-certs

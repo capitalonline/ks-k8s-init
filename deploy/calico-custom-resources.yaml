@@ -18,9 +18,10 @@ spec:
         natOutgoing: Enabled
         nodeSelector: all()
 
-
-#    nodeAddressAutodetectionV4:
-#      interface: eth1
+    nodeAddressAutodetectionV4:
+      cidrs:
+        - '{vpcNetworkCidr}'
+      firstFound: false
 
 #  variant: Calico
 #  imagePullSecrets:
